@@ -153,27 +153,89 @@ Explicitly excluded. Documented to prevent scope creep.
 
 ## Traceability
 
-Which phases cover which requirements. Updated during roadmap creation.
+Final phase assignments locked at roadmap creation (2026-05-20).
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUND-01 through FOUND-13 | Phase 1 | Pending |
-| CONT-01 through CONT-08 | Phase 2 | Pending |
-| SEC-01 through SEC-08 | Phase 2 | Pending |
-| PROJ-01 through PROJ-05 | Phase 2 | Pending |
-| USES-01 through USES-03 | Phase 2 | Pending |
-| DIAG-01 through DIAG-04 | Phase 2 | Pending |
-| SEO-01 through SEO-09 | Phase 3 | Pending |
-| POL-01 through POL-10 | Phase 3 | Pending |
-| DEP-01 through DEP-12 | Phase 4 | Pending |
+| FOUND-01 | Phase 1 | Pending |
+| FOUND-02 | Phase 1 | Pending |
+| FOUND-03 | Phase 1 | Pending |
+| FOUND-04 | Phase 1 | Pending |
+| FOUND-05 | Phase 1 | Pending |
+| FOUND-06 | Phase 1 | Pending |
+| FOUND-07 | Phase 1 | Pending |
+| FOUND-08 | Phase 1 | Pending |
+| FOUND-09 | Phase 1 | Pending |
+| FOUND-10 | Phase 1 | Pending |
+| FOUND-11 | Phase 1 | Pending |
+| FOUND-12 | Phase 1 | Pending |
+| FOUND-13 | Phase 1 | Pending |
+| DEP-01 | Phase 1 | Pending |
+| DEP-02 | Phase 1 | Pending |
+| CONT-01 | Phase 2 | Pending |
+| CONT-02 | Phase 2 | Pending |
+| CONT-03 | Phase 2 | Pending |
+| CONT-04 | Phase 2 | Pending |
+| CONT-05 | Phase 2 | Pending |
+| CONT-06 | Phase 2 | Pending |
+| CONT-07 | Phase 2 | Pending |
+| CONT-08 | Phase 2 | Pending |
+| SEC-01 | Phase 2 | Pending |
+| SEC-02 | Phase 2 | Pending |
+| SEC-03 | Phase 2 | Pending |
+| SEC-04 | Phase 2 | Pending |
+| SEC-05 | Phase 2 | Pending |
+| SEC-06 | Phase 2 | Pending |
+| SEC-07 | Phase 2 | Pending |
+| SEC-08 | Phase 2 | Pending |
+| PROJ-01 | Phase 2 | Pending |
+| PROJ-02 | Phase 2 | Pending |
+| PROJ-03 | Phase 2 | Pending |
+| PROJ-04 | Phase 2 | Pending |
+| PROJ-05 | Phase 2 | Pending |
+| USES-01 | Phase 2 | Pending |
+| USES-02 | Phase 2 | Pending |
+| USES-03 | Phase 2 | Pending |
+| DIAG-01 | Phase 2 | Pending |
+| DIAG-02 | Phase 2 | Pending |
+| DIAG-03 | Phase 2 | Pending |
+| DIAG-04 | Phase 2 | Pending |
+| SEO-01 | Phase 3 | Pending |
+| SEO-02 | Phase 3 | Pending |
+| SEO-03 | Phase 3 | Pending |
+| SEO-04 | Phase 3 | Pending |
+| SEO-05 | Phase 3 | Pending |
+| SEO-06 | Phase 3 | Pending |
+| SEO-07 | Phase 3 | Pending |
+| SEO-08 | Phase 3 | Pending |
+| SEO-09 | Phase 3 | Pending |
+| POL-01 | Phase 3 | Pending |
+| POL-02 | Phase 3 | Pending |
+| POL-03 | Phase 3 | Pending |
+| POL-04 | Phase 3 | Pending |
+| POL-05 | Phase 3 | Pending |
+| POL-06 | Phase 3 | Pending |
+| POL-07 | Phase 3 | Pending |
+| POL-08 | Phase 3 | Pending |
+| POL-09 | Phase 3 | Pending |
+| POL-10 | Phase 3 | Pending |
+| DEP-03 | Phase 4 | Pending |
+| DEP-04 | Phase 4 | Pending |
+| DEP-05 | Phase 4 | Pending |
+| DEP-06 | Phase 4 | Pending |
+| DEP-07 | Phase 4 | Pending |
+| DEP-08 | Phase 4 | Pending |
+| DEP-09 | Phase 4 | Pending |
+| DEP-10 | Phase 4 | Pending |
+| DEP-11 | Phase 4 | Pending |
+| DEP-12 | Phase 4 | Pending |
 
 **Coverage:**
 - v1 requirements: 64 total
-- Mapped to phases (placeholder): 64
+- Mapped to phases: 64 ✓
 - Unmapped: 0 ✓
-
-Roadmap step will lock the final phase assignment.
+- Duplicate mappings: 0 ✓
 
 ---
 *Requirements defined: 2026-05-20*
-*Last updated: 2026-05-20 after initial definition*
+*Last updated: 2026-05-20 — roadmap phase assignments locked*
