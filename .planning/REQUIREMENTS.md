@@ -9,19 +9,19 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Foundations & Design System
 
-- [ ] **FOUND-01**: Next.js 16 (App Router) + React 19.2 + TypeScript strict project scaffold runs locally with `pnpm dev`
-- [ ] **FOUND-02**: Tailwind v4 configured via CSS-first `@theme` in `globals.css` — no `tailwind.config.js`
-- [ ] **FOUND-03**: Geist Sans + Geist Mono loaded via `next/font/google` with zero layout shift
-- [ ] **FOUND-04**: `tsconfig.json` enforces `strict: true` and `noUncheckedIndexedAccess: true`
-- [ ] **FOUND-05**: Mono palette (single color mode) with accessible contrast (≥4.5:1 for body text) defined in design tokens
-- [ ] **FOUND-06**: Responsive typography scale using `clamp()` works at 375px, 768px, and 1280px viewports
+- [x] **FOUND-01**: Next.js 16 (App Router) + React 19.2 + TypeScript strict project scaffold runs locally with `pnpm dev`
+- [x] **FOUND-02**: Tailwind v4 configured via CSS-first `@theme` in `globals.css` — no `tailwind.config.js`
+- [x] **FOUND-03**: Geist Sans + Geist Mono loaded via `next/font/google` with zero layout shift
+- [x] **FOUND-04**: `tsconfig.json` enforces `strict: true` and `noUncheckedIndexedAccess: true`
+- [x] **FOUND-05**: Mono palette (single color mode) with accessible contrast (≥4.5:1 for body text) defined in design tokens
+- [x] **FOUND-06**: Responsive typography scale using `clamp()` works at 375px, 768px, and 1280px viewports
 - [ ] **FOUND-07**: Numbered section anchor style (`01.` `02.` etc.) implemented as a reusable primitive
 - [ ] **FOUND-08**: UI primitives exist: `Section`, `NumberedHeading`, `Tag`, `ExternalLink`, `ArchitectureDiagram`
-- [ ] **FOUND-09**: `app/layout.tsx` declares `metadataBase: new URL('https://pjnhek.com')` and default metadata (title, description, OG, Twitter)
+- [x] **FOUND-09**: `app/layout.tsx` declares `metadataBase: new URL('https://pjnhek.com')` and default metadata (title, description, OG, Twitter)
 - [ ] **FOUND-10**: `lib/env.ts` validates required env vars with zod at build time
-- [ ] **FOUND-11**: ESLint + Prettier with `prettier-plugin-tailwindcss` runs clean (`pnpm lint`, `pnpm format`)
-- [ ] **FOUND-12**: `next.config.ts` does NOT set `output: 'export'` (preserves `next/image` and dynamic OG)
-- [ ] **FOUND-13**: `package.json` pins `packageManager: pnpm@...` and `engines.node` to 22 LTS
+- [x] **FOUND-11**: ESLint + Prettier with `prettier-plugin-tailwindcss` runs clean (`pnpm lint`, `pnpm format`)
+- [x] **FOUND-12**: `next.config.ts` does NOT set `output: 'export'` (preserves `next/image` and dynamic OG)
+- [x] **FOUND-13**: `package.json` pins `packageManager: pnpm@...` and `engines.node` to 22 LTS
 
 ### Content & Data
 
@@ -157,19 +157,19 @@ Final phase assignments locked at roadmap creation (2026-05-20).
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUND-01 | Phase 1 | Pending |
-| FOUND-02 | Phase 1 | Pending |
-| FOUND-03 | Phase 1 | Pending |
-| FOUND-04 | Phase 1 | Pending |
-| FOUND-05 | Phase 1 | Pending |
-| FOUND-06 | Phase 1 | Pending |
+| FOUND-01 | Phase 1 | Complete |
+| FOUND-02 | Phase 1 | Complete |
+| FOUND-03 | Phase 1 | Complete |
+| FOUND-04 | Phase 1 | Complete |
+| FOUND-05 | Phase 1 | Complete |
+| FOUND-06 | Phase 1 | Complete |
 | FOUND-07 | Phase 1 | Pending |
 | FOUND-08 | Phase 1 | Pending |
-| FOUND-09 | Phase 1 | Pending |
+| FOUND-09 | Phase 1 | Complete |
 | FOUND-10 | Phase 1 | Pending |
-| FOUND-11 | Phase 1 | Pending |
-| FOUND-12 | Phase 1 | Pending |
-| FOUND-13 | Phase 1 | Pending |
+| FOUND-11 | Phase 1 | Complete |
+| FOUND-12 | Phase 1 | Complete |
+| FOUND-13 | Phase 1 | Complete |
 | DEP-01 | Phase 1 | Pending |
 | DEP-02 | Phase 1 | Pending |
 | CONT-01 | Phase 2 | Pending |

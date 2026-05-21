@@ -2,35 +2,38 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: "Phase 1 UI-SPEC approved — run /gsd:plan-phase 1 next"
-last_updated: "2026-05-20T22:30:00.000Z"
+status: executing
+last_updated: "2026-05-21T00:03:03.826Z"
 progress:
   total_phases: 4
   completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
+  total_plans: 3
+  completed_plans: 1
   percent: 0
 ---
 
 # Project State: pjnhek.com — James Nhek Portfolio
 
-**Last Updated:** 2026-05-20
+**Last Updated:** 2026-05-20 (after Plan 01-01 execution)
 
 ## Project Reference
 
 **Core Value:** A recruiter lands on pjnhek.com, immediately understands "James is a serious AI Engineer doing real RAG/eval work at Asurion," sees 3–4 substantive projects with real depth, and has an obvious way to reach out — all within 60 seconds, on a phone.
 
-**Current Focus:** Phase 1 — Foundation Slice (Next.js 16 + Tailwind v4 + TS scaffold + Vercel preview)
+**Current Focus:** Phase 01 — foundation-slice
 
 **Project Mode:** Vertical MVP (every phase ships a deployable, recruiter-viewable improvement)
 **Granularity:** Coarse (4 phases)
 
 ## Current Position
 
+Phase: 01 (foundation-slice) — EXECUTING
+Plan: 2 of 3
+
 - **Phase:** 1 — Foundation Slice
-- **Plan:** Not yet planned (`/gsd:plan-phase 1` to begin)
-- **Status:** Phase 1 UI-SPEC approved (6/6 dimensions PASS) — run /gsd:plan-phase 1 next
-- **Progress:** Phase 0 of 4 complete
+- **Plan:** 01-01 complete (scaffold + home shell); next is 01-02 (primitives extraction + `lib/env.ts`)
+- **Status:** Executing Phase 01
+- **Progress:** [███░░░░░░░] 33% (1 of 3 plans in Phase 1 complete)
 
 ```
 [░░░░░░░░░░] 0/4 phases complete
@@ -50,6 +53,12 @@ progress:
 | Legacy pnhek.github.io decommissioned | Yes | Active |
 | Confidentiality review pass on Asurion content | Yes (gated) | Not authored |
 
+### Plan Execution Metrics
+
+| Plan | Duration | Tasks | Files Created |
+|------|----------|-------|---------------|
+| 01-01 (scaffold + home shell) | 530 s (≈ 8m 50s) | 3 | 23 |
+
 ## Accumulated Context
 
 ### Key Decisions Locked
@@ -64,10 +73,16 @@ progress:
 - **No `output: 'export'`** — explicit (preserves `next/image`, dynamic OG, ISR)
 - **Numbered section anchors** (`01.` `02.`) shipped in Phase 1 design system
 - **Asurion content:** allow-list of facts from public May-2026 resume; no internal product names; diagrams drawn fresh in Excalidraw/tldraw with generic node names; **confidentiality review is a hard merge gate in Phase 2**
+- **Tailwind v4 content scanner exclusion (Plan 01-01):** `@source not "../../.planning";` in `src/app/globals.css` so PostCSS does not choke on literal class specimens in planning markdown (RESEARCH.md line 1013).
+- **Project-doc Prettier ignore (Plan 01-01):** `CLAUDE.md` and `AGENTS.md` listed in `.prettierignore`. Prettier must never reflow the user-authored project brief or the scaffold's Next-16 agent-rules hint.
+- **Scaffold workaround (Plan 01-01):** `pnpm create next-app` refuses non-empty target directories even with `--yes`. Scaffolded into `mktemp -d` and moved files into the repo root; preserved `.planning/`, the real `CLAUDE.md`, and `AGENTS.md`.
 
 ### Open Todos
 
-- [ ] Run `/gsd:plan-phase 1` to decompose Phase 1 into plans
+- [x] Run `/gsd:plan-phase 1` to decompose Phase 1 into plans
+- [x] Plan 01-01 — scaffold + home shell complete (commits `ff1a96c`, `7b0f0e1`)
+- [ ] Plan 01-02 — extract primitives + wire `lib/env.ts`
+- [ ] Plan 01-03 — Vercel preview + GitHub repo (DEP-01, DEP-02)
 - [ ] Confirm GitHub repo name with user (default: `pjnhek/portfolio`)
 - [ ] Decide whether `james@pjnhek.com` email forwarding is in scope (affects Phase 4 DNS research)
 
@@ -87,13 +102,15 @@ progress:
 
 ### Next Action
 
-`/gsd:plan-phase 1` — decompose Phase 1 (Foundation Slice) into plans.
+`/gsd:execute-phase 1 --plan 01-02` — extract design-system primitives and wire `src/lib/env.ts`.
 
 ### Files Created This Session
 
-- `.planning/ROADMAP.md`
-- `.planning/STATE.md`
-- `.planning/REQUIREMENTS.md` (traceability section updated with final phase assignments)
+- Full Next.js 16 + Tailwind v4 scaffold (see `01-01-SUMMARY.md` for the file list)
+- `src/app/globals.css` with UI-SPEC.md `@theme` tokens
+- `src/app/layout.tsx` with Geist + metadata
+- `src/app/page.tsx` with inline hero + 5 numbered sections (verbatim Copywriting Contract)
+- `.planning/phases/01-foundation-slice/01-01-SUMMARY.md`
 
 ### Resumption Notes
 
