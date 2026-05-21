@@ -1,13 +1,17 @@
-// Home shell — Phase 1 (Plan 01-01).
+// Home shell — Phase 1 (Plan 01-02).
 //
-// Renders the hero + 5 numbered section placeholders INLINE. This file is
-// intentionally text-only; Plan 02 will extract the repeated patterns into the
-// `Section` / `NumberedHeading` / `Tag` / `ExternalLink` / `ArchitectureDiagram`
-// primitives without changing the visible output. Every string below is
-// verbatim from `UI-SPEC.md` `## Copywriting Contract` — do NOT paraphrase.
+// Refactored from Plan 01-01's inline shell to compose the 5 design-system
+// primitives. Visible output is additively extended from Plan 01-01: same
+// hero, same 5 numbered sections, same verbatim Copywriting Contract — plus
+// a placeholder diagram in About, a `LangGraph` chip in Experience, and a
+// clickable `github.com/pjnhek` ExternalLink in Featured Projects.
 //
-// Server Component (no client-island directive). No icons, no nav, no footer
-// in Phase 1.
+// Server Component (no client-island directive). The hero stays inline
+// because it carries the only `<h1>` on the page (Section defaults to `<h2>`).
+import { ArchitectureDiagram } from "@/components/primitives/ArchitectureDiagram";
+import { ExternalLink } from "@/components/primitives/ExternalLink";
+import { Section } from "@/components/primitives/Section";
+import { Tag } from "@/components/primitives/Tag";
 
 export default function Home() {
   return (
@@ -30,92 +34,45 @@ export default function Home() {
         </div>
       </header>
 
-      {/* 01. About */}
-      <section id="about" className="py-16 md:py-24">
-        <div className="mx-auto max-w-2xl px-6 md:px-12">
-          <h2 className="mb-8 flex items-baseline gap-2 md:mb-12">
-            <span className="font-mono text-[length:var(--text-caption)] text-[color:var(--color-ink-muted)] tabular-nums">
-              01.
-            </span>
-            <span className="text-[length:var(--text-heading)] leading-[var(--leading-heading)] font-medium tracking-[-0.01em] text-[color:var(--color-ink)]">
-              About
-            </span>
-          </h2>
-          <p className="text-[length:var(--text-body)] leading-[var(--leading-body)] text-[color:var(--color-ink-muted)]">
-            Coming soon — the tax-analyst → AI-engineer pivot.
-          </p>
-        </div>
-      </section>
+      <Section id="about" number="01" title="About">
+        <p className="text-[length:var(--text-body)] leading-[var(--leading-body)] text-[color:var(--color-ink-muted)]">
+          Coming soon — the tax-analyst → AI-engineer pivot.
+        </p>
+        <ArchitectureDiagram
+          src="/diagrams/_placeholder.svg"
+          alt="Placeholder architecture diagram — generic box-and-arrow layout used to exercise the ArchitectureDiagram primitive before Phase 2 ships real diagrams."
+          caption="Placeholder — replaced in Phase 2."
+        />
+      </Section>
 
-      {/* 02. Experience */}
-      <section id="experience" className="py-16 md:py-24">
-        <div className="mx-auto max-w-2xl px-6 md:px-12">
-          <h2 className="mb-8 flex items-baseline gap-2 md:mb-12">
-            <span className="font-mono text-[length:var(--text-caption)] text-[color:var(--color-ink-muted)] tabular-nums">
-              02.
-            </span>
-            <span className="text-[length:var(--text-heading)] leading-[var(--leading-heading)] font-medium tracking-[-0.01em] text-[color:var(--color-ink)]">
-              Experience
-            </span>
-          </h2>
-          <p className="text-[length:var(--text-body)] leading-[var(--leading-body)] text-[color:var(--color-ink-muted)]">
-            Coming soon — Asurion and prior roles.
-          </p>
-        </div>
-      </section>
+      <Section id="experience" number="02" title="Experience">
+        <p className="text-[length:var(--text-body)] leading-[var(--leading-body)] text-[color:var(--color-ink-muted)]">
+          Coming soon — Asurion and prior roles. <Tag>LangGraph</Tag>
+        </p>
+      </Section>
 
-      {/* 03. Featured Projects */}
-      <section id="projects" className="py-16 md:py-24">
-        <div className="mx-auto max-w-2xl px-6 md:px-12">
-          <h2 className="mb-8 flex items-baseline gap-2 md:mb-12">
-            <span className="font-mono text-[length:var(--text-caption)] text-[color:var(--color-ink-muted)] tabular-nums">
-              03.
-            </span>
-            <span className="text-[length:var(--text-heading)] leading-[var(--leading-heading)] font-medium tracking-[-0.01em] text-[color:var(--color-ink)]">
-              Featured Projects
-            </span>
-          </h2>
-          <p className="text-[length:var(--text-body)] leading-[var(--leading-body)] text-[color:var(--color-ink-muted)]">
-            Coming soon — four projects on agents, RAG, evaluations, and data
-            pipelines.
-          </p>
-        </div>
-      </section>
+      <Section id="projects" number="03" title="Featured Projects">
+        <p className="text-[length:var(--text-body)] leading-[var(--leading-body)] text-[color:var(--color-ink-muted)]">
+          Coming soon — four projects on agents, RAG, evaluations, and data
+          pipelines.{" "}
+          <ExternalLink href="https://github.com/pjnhek">
+            github.com/pjnhek
+          </ExternalLink>
+        </p>
+      </Section>
 
-      {/* 04. Uses */}
-      <section id="uses" className="py-16 md:py-24">
-        <div className="mx-auto max-w-2xl px-6 md:px-12">
-          <h2 className="mb-8 flex items-baseline gap-2 md:mb-12">
-            <span className="font-mono text-[length:var(--text-caption)] text-[color:var(--color-ink-muted)] tabular-nums">
-              04.
-            </span>
-            <span className="text-[length:var(--text-heading)] leading-[var(--leading-heading)] font-medium tracking-[-0.01em] text-[color:var(--color-ink)]">
-              Uses
-            </span>
-          </h2>
-          <p className="text-[length:var(--text-body)] leading-[var(--leading-body)] text-[color:var(--color-ink-muted)]">
-            Coming soon — model defaults, MCP servers, eval stack, agent
-            framework.
-          </p>
-        </div>
-      </section>
+      <Section id="uses" number="04" title="Uses">
+        <p className="text-[length:var(--text-body)] leading-[var(--leading-body)] text-[color:var(--color-ink-muted)]">
+          Coming soon — model defaults, MCP servers, eval stack, agent
+          framework.
+        </p>
+      </Section>
 
-      {/* 05. Contact */}
-      <section id="contact" className="py-16 md:py-24">
-        <div className="mx-auto max-w-2xl px-6 md:px-12">
-          <h2 className="mb-8 flex items-baseline gap-2 md:mb-12">
-            <span className="font-mono text-[length:var(--text-caption)] text-[color:var(--color-ink-muted)] tabular-nums">
-              05.
-            </span>
-            <span className="text-[length:var(--text-heading)] leading-[var(--leading-heading)] font-medium tracking-[-0.01em] text-[color:var(--color-ink)]">
-              Contact
-            </span>
-          </h2>
-          <p className="text-[length:var(--text-body)] leading-[var(--leading-body)] text-[color:var(--color-ink-muted)]">
-            Coming soon — email, LinkedIn, GitHub.
-          </p>
-        </div>
-      </section>
+      <Section id="contact" number="05" title="Contact">
+        <p className="text-[length:var(--text-body)] leading-[var(--leading-body)] text-[color:var(--color-ink-muted)]">
+          Coming soon — email, LinkedIn, GitHub.
+        </p>
+      </Section>
     </main>
   );
 }

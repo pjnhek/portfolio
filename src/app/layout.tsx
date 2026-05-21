@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { env } from "@/lib/env";
 import "./globals.css";
 
 // Geist Sans + Geist Mono are loaded via `next/font/google` — self-hosted at
@@ -17,14 +18,13 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-// Phase 1 reads `NEXT_PUBLIC_SITE_URL` directly with a string fallback so
-// previews build without an env var being set. Plan 02 will swap this to
-// `env.NEXT_PUBLIC_SITE_URL` from `src/lib/env.ts` (zod-validated) — at which
-// point removing the `.default()` makes the build hard-fail (FOUND-10).
+// `env.NEXT_PUBLIC_SITE_URL` is the zod-validated read path (Plan 01-02 wired
+// `src/lib/env.ts`). The schema's `.default("https://pjnhek.com")` keeps the
+// build green when the env var is unset; Phase 4 removes the default once
+// Vercel production env is configured, at which point a missing var hard-fails
+// `next build` per FOUND-10.
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://pjnhek.com",
-  ),
+  metadataBase: new URL(env.NEXT_PUBLIC_SITE_URL),
   title: "James Nhek — AI Engineer",
   description:
     "AI Engineer at Asurion. RAG, evaluations, and agentic workflows. Based in San Francisco. Open to roles.",
