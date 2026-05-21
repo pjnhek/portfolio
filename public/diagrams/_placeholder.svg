@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none" stroke="#0a0a0a" stroke-width="2" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">
+  <rect x="40" y="170" width="160" height="110"/>
+  <text x="120" y="232" text-anchor="middle" fill="#0a0a0a" stroke="none">Input</text>
+  <rect x="320" y="170" width="160" height="110"/>
+  <text x="400" y="232" text-anchor="middle" fill="#0a0a0a" stroke="none">Process</text>
+  <rect x="600" y="170" width="160" height="110"/>
+  <text x="680" y="232" text-anchor="middle" fill="#0a0a0a" stroke="none">Output</text>
+  <line x1="200" y1="225" x2="312" y2="225"/>
+  <polyline points="302,217 312,225 302,233"/>
+  <line x1="480" y1="225" x2="592" y2="225"/>
+  <polyline points="582,217 592,225 582,233"/>
+</svg>
