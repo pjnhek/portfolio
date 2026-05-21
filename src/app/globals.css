@@ -1,26 +1,60 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Tailwind v4 auto-detects content sources by scanning sibling files. Exclude
+   the `.planning/` directory: it is project documentation, not code, and its
+   markdown examples (e.g. literal "text-[length:var(--text-*)]" specimens) get
+   picked up as class candidates and break PostCSS parsing. */
+@source not "../../.planning";
 
+/* Font tokens reference CSS variables emitted by `next/font/google` in
+   `src/app/layout.tsx`. `@theme inline` (NOT plain `@theme`) is the canonical
+   Next.js 16 + Tailwind v4 idiom for `var()` references — it inlines the
+   reference into generated utilities instead of wrapping it. */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Mono palette + responsive type scale + line heights. Token names are the
+   contract from UI-SPEC.md `## Tailwind v4 @theme Token Block`. */
+@theme {
+  /* Mono palette — see UI-SPEC.md `## Color`. Contrast: ink/paper ≈ 18.8:1,
+     ink-muted/paper ≈ 4.61:1 (both pass WCAG AA for body text). */
+  --color-paper: oklch(0.985 0 0); /* ~#fafafa — page background */
+  --color-ink: oklch(0.18 0 0); /* ~#0a0a0a — primary text, diagram strokes */
+  --color-ink-muted: oklch(
+    0.55 0 0
+  ); /* ~#737373 — anchors, captions, placeholders */
+  --color-rule: oklch(0.92 0 0); /* ~#e5e5e5 — hairlines, tag borders */
+
+  /* Type scale — clamp() per UI-SPEC.md `## Typography`. Body floor 17px. */
+  --text-caption: clamp(13px, 0.85rem, 14px);
+  --text-body: clamp(17px, 1rem + 0.1vw, 19px);
+  --text-subhead: clamp(20px, 1.125rem + 0.4vw, 24px);
+  --text-heading: clamp(24px, 1.25rem + 1.1vw, 32px);
+  --text-display: clamp(36px, 1.5rem + 4.5vw, 56px);
+
+  /* Line heights — per UI-SPEC.md `## Typography`. */
+  --leading-tight: 1.1;
+  --leading-snug: 1.2;
+  --leading-display: 1.1;
+  --leading-heading: 1.2;
+  --leading-body: 1.6;
+  --leading-caption: 1.4;
+}
+
+html {
+  color: var(--color-ink);
+  background: var(--color-paper);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-paper);
 }
