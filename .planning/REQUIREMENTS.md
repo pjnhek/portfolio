@@ -15,10 +15,10 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **FOUND-04**: `tsconfig.json` enforces `strict: true` and `noUncheckedIndexedAccess: true`
 - [x] **FOUND-05**: Mono palette (single color mode) with accessible contrast (≥4.5:1 for body text) defined in design tokens
 - [x] **FOUND-06**: Responsive typography scale using `clamp()` works at 375px, 768px, and 1280px viewports
-- [ ] **FOUND-07**: Numbered section anchor style (`01.` `02.` etc.) implemented as a reusable primitive
-- [ ] **FOUND-08**: UI primitives exist: `Section`, `NumberedHeading`, `Tag`, `ExternalLink`, `ArchitectureDiagram`
+- [x] **FOUND-07**: Numbered section anchor style (`01.` `02.` etc.) implemented as a reusable primitive
+- [x] **FOUND-08**: UI primitives exist: `Section`, `NumberedHeading`, `Tag`, `ExternalLink`, `ArchitectureDiagram`
 - [x] **FOUND-09**: `app/layout.tsx` declares `metadataBase: new URL('https://pjnhek.com')` and default metadata (title, description, OG, Twitter)
-- [ ] **FOUND-10**: `lib/env.ts` validates required env vars with zod at build time
+- [x] **FOUND-10**: `lib/env.ts` validates required env vars with zod at build time
 - [x] **FOUND-11**: ESLint + Prettier with `prettier-plugin-tailwindcss` runs clean (`pnpm lint`, `pnpm format`)
 - [x] **FOUND-12**: `next.config.ts` does NOT set `output: 'export'` (preserves `next/image` and dynamic OG)
 - [x] **FOUND-13**: `package.json` pins `packageManager: pnpm@...` and `engines.node` to 22 LTS
@@ -163,10 +163,10 @@ Final phase assignments locked at roadmap creation (2026-05-20).
 | FOUND-04 | Phase 1 | Complete |
 | FOUND-05 | Phase 1 | Complete |
 | FOUND-06 | Phase 1 | Complete |
-| FOUND-07 | Phase 1 | Pending |
-| FOUND-08 | Phase 1 | Pending |
+| FOUND-07 | Phase 1 | Complete |
+| FOUND-08 | Phase 1 | Complete |
 | FOUND-09 | Phase 1 | Complete |
-| FOUND-10 | Phase 1 | Pending |
+| FOUND-10 | Phase 1 | Complete |
 | FOUND-11 | Phase 1 | Complete |
 | FOUND-12 | Phase 1 | Complete |
 | FOUND-13 | Phase 1 | Complete |

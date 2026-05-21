@@ -26,9 +26,9 @@
   2. Every pull request to `main` produces a Vercel preview deployment URL whose browser tab title contains "James Nhek" (default metadata from `app/layout.tsx`) and whose `<html>` ships zero `tailwind.config.js`-based styles (CSS-first `@theme` only).
   3. `pnpm lint`, `pnpm format`, and `tsc --noEmit` all exit cleanly with `strict: true` and `noUncheckedIndexedAccess: true` enforced, and the design-system primitives (`Section`, `NumberedHeading`, `Tag`, `ExternalLink`, `ArchitectureDiagram`) compile and render in isolation.
   4. `next.config.ts` does not set `output: 'export'`, `package.json` pins `packageManager: pnpm@…` and `engines.node` to Node 22 LTS, and `lib/env.ts` fails the build with a zod error when a required env var is missing.
-**Plans:** 1/3 plans executed
+**Plans:** 2/3 plans executed
 - [x] 01-01-PLAN.md — Scaffold Next.js 16 + Tailwind v4 + TS strict + Geist + ESLint/Prettier + inline home shell (FOUND-01/02/03/04/05/06/09/11/12/13)
-- [ ] 01-02-PLAN.md — 5 design-system primitives + zod-validated env.ts + placeholder SVG + refactor home shell to compose primitives (FOUND-07/08/10)
+- [x] 01-02-PLAN.md — 5 design-system primitives + zod-validated env.ts + placeholder SVG + refactor home shell to compose primitives (FOUND-07/08/10)
 - [ ] 01-03-PLAN.md — GitHub repo pjnhek/portfolio public + branch protection + Vercel preview-on-PR + smoke-test PR (DEP-01/02)
 
 ### Phase 2: Content & Sections (with Confidentiality Gate)
