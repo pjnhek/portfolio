@@ -29,6 +29,8 @@ Phase 1 — Foundation Slice (shell only; real content lands in Phase 2). See
 gets a Vercel preview URL — that is the load-bearing signal until the custom
 domain is cut over in Phase 4.
 
+_Live preview URL appears as a Vercel comment on every PR._
+
 ## Where things live
 
 - `src/app/` — App Router routes (`layout.tsx`, `page.tsx`, `globals.css`)
