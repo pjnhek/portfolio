@@ -25,46 +25,46 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Content & Data
 
-- [ ] **CONT-01**: `types/content.ts` defines `Project`, `Role`, `UsesItem`, and `SiteConfig` interfaces with full type safety
-- [ ] **CONT-02**: `content/site.ts` holds James's name, tagline, location, email, GitHub URL, LinkedIn URL, and base URL
-- [ ] **CONT-03**: `content/experience.ts` contains all roles: AI Engineer @ Asurion, Tax Analyst @ A to Z Tax Services, Data Analyst @ FWD Life Insurance, plus USF MSDS and University of Houston education entries
-- [ ] **CONT-04**: `content/projects.ts` contains exactly 4 featured projects (SF Date Night Concierge, GTM Research Pipeline, Voice Intent Eval, Daily Weather Pipeline) with title, slug, subtitle, metric, tech stack, GitHub URL, and detailed description
-- [ ] **CONT-05**: `content/uses.ts` contains AI-engineer-specific tools (models, MCP servers, eval stack, agent framework, hardware)
-- [ ] **CONT-06**: `lib/content.ts` exposes `getAllProjects()` and `getProject(slug)` accessors
-- [ ] **CONT-07**: Asurion content uses only public-resume facts (no internal tool names, no proprietary architecture, no confidential metrics beyond the resume) — passes confidentiality review
-- [ ] **CONT-08**: Every Asurion bullet contains a number (e.g., "+10.6% accuracy", "249 synthetic QA pairs", "5 enterprise tenants") — no vague claims
+- [x] **CONT-01**: `types/content.ts` defines `Project`, `Role`, `UsesItem`, and `SiteConfig` interfaces with full type safety
+- [x] **CONT-02**: `content/site.ts` holds James's name, tagline, location, email, GitHub URL, LinkedIn URL, and base URL
+- [x] **CONT-03**: `content/experience.ts` contains all roles: AI Engineer @ Asurion, Tax Analyst @ A to Z Tax Services, Data Analyst @ FWD Life Insurance, plus USF MSDS and University of Houston education entries
+- [x] **CONT-04**: `content/projects.ts` contains exactly 4 featured projects (SF Date Night Concierge, GTM Research Pipeline, Voice Intent Eval, Daily Weather Pipeline) with title, slug, subtitle, metric, tech stack, GitHub URL, and detailed description
+- [x] **CONT-05**: `content/uses.ts` contains AI-engineer-specific tools (models, MCP servers, eval stack, agent framework, hardware)
+- [x] **CONT-06**: `lib/content.ts` exposes `getAllProjects()` and `getProject(slug)` accessors
+- [x] **CONT-07**: Asurion content uses only public-resume facts (no internal tool names, no proprietary architecture, no confidential metrics beyond the resume) — passes confidentiality review
+- [x] **CONT-08**: Every Asurion bullet contains a number (e.g., "+10.6% accuracy", "249 synthetic QA pairs", "5 enterprise tenants") — no vague claims
 
 ### Page Sections (Home Route)
 
-- [ ] **SEC-01**: Hero section displays James's name, role ("AI Engineer @ Asurion"), specialization ("RAG · evaluations · agentic workflows"), San Francisco location, and an "open to AI Engineer roles" line — no animation, no typing effect
-- [ ] **SEC-02**: About section opens its first sentence with the tax-analyst → AI-engineer pivot — pivot is not buried
-- [ ] **SEC-03**: Experience section displays each role inline with company, dates, location, and bulleted achievements — no PDF download button
-- [ ] **SEC-04**: Featured Projects section displays 4 project cards in a responsive grid (1 column on mobile, 2 columns desktop)
-- [ ] **SEC-05**: Each project card shows title, plain-English one-line subtitle, primary metric callout, tech-chip row, and a GitHub link
-- [ ] **SEC-06**: Contact section displays a `mailto:` link, copy-email-to-clipboard button, LinkedIn link, and GitHub link
-- [ ] **SEC-07**: All sections are Server Components — `"use client"` appears only in `components/interactive/CopyEmail.tsx`
-- [ ] **SEC-08**: Section anchors (`#about`, `#experience`, `#projects`, `#contact`) work and update the URL hash on click
+- [x] **SEC-01**: Hero section displays James's name, role ("AI Engineer @ Asurion"), specialization ("RAG · evaluations · agentic workflows"), San Francisco location, and an "open to AI Engineer roles" line — no animation, no typing effect
+- [x] **SEC-02**: About section opens its first sentence with the tax-analyst → AI-engineer pivot — pivot is not buried
+- [x] **SEC-03**: Experience section displays each role inline with company, dates, location, and bulleted achievements — no PDF download button
+- [x] **SEC-04**: Featured Projects section displays 4 project cards in a responsive grid (1 column on mobile, 2 columns desktop)
+- [x] **SEC-05**: Each project card shows title, plain-English one-line subtitle, primary metric callout, tech-chip row, and a GitHub link
+- [x] **SEC-06**: Contact section displays a `mailto:` link, copy-email-to-clipboard button, LinkedIn link, and GitHub link
+- [x] **SEC-07**: All sections are Server Components — `"use client"` appears only in `components/interactive/CopyEmail.tsx`
+- [x] **SEC-08**: Section anchors (`#about`, `#experience`, `#projects`, `#contact`) work and update the URL hash on click
 
 ### Project Detail Pages
 
-- [ ] **PROJ-01**: `/projects/[slug]` route renders a detail page for each of the 4 featured projects
-- [ ] **PROJ-02**: `generateStaticParams` derives slugs from `content/projects.ts` — all 4 pages are statically generated at build time
-- [ ] **PROJ-03**: Each detail page follows a Problem → Approach → Result narrative structure
-- [ ] **PROJ-04**: At least 1 featured project's detail page includes a sanitized architecture diagram (SVG in `public/diagrams/`)
-- [ ] **PROJ-05**: Each detail page exposes `generateMetadata` with the project title and subtitle in the page `<title>` and meta description
+- [x] **PROJ-01**: `/projects/[slug]` route renders a detail page for each of the 4 featured projects
+- [x] **PROJ-02**: `generateStaticParams` derives slugs from `content/projects.ts` — all 4 pages are statically generated at build time
+- [x] **PROJ-03**: Each detail page follows a Problem → Approach → Result narrative structure
+- [x] **PROJ-04**: At least 1 featured project's detail page includes a sanitized architecture diagram (SVG in `public/diagrams/`)
+- [x] **PROJ-05**: Each detail page exposes `generateMetadata` with the project title and subtitle in the page `<title>` and meta description
 
 ### /uses Page
 
-- [ ] **USES-01**: `/uses` route exists and renders content from `content/uses.ts`
-- [ ] **USES-02**: Content is AI-engineer-specific (not a generic dev /uses) — covers model defaults, MCP/agent tooling, eval stack
-- [ ] **USES-03**: `/uses` page links back to home and is reachable from the footer
+- [x] **USES-01**: `/uses` route exists and renders content from `content/uses.ts`
+- [x] **USES-02**: Content is AI-engineer-specific (not a generic dev /uses) — covers model defaults, MCP/agent tooling, eval stack
+- [x] **USES-03**: `/uses` page links back to home and is reachable from the footer
 
 ### Architecture Diagrams (Sanitized)
 
-- [ ] **DIAG-01**: One Asurion-context architecture diagram is drawn fresh from scratch in Excalidraw or tldraw, using only generic component names ("Retriever," "Reranker," "Vector Store"); no internal product names, codenames, or screenshots
-- [ ] **DIAG-02**: One featured-project architecture diagram (recommended: SF Date Night Concierge or Voice Intent Eval) exists as a sanitized SVG in `public/diagrams/`
-- [ ] **DIAG-03**: All diagrams render crisply on retina at full width on mobile and desktop; alt text describes the component flow for screen readers
-- [ ] **DIAG-04**: A confidentiality review gate passes on every Asurion-touching paragraph and diagram before deploy
+- [x] **DIAG-01**: One Asurion-context architecture diagram is drawn fresh from scratch in Excalidraw or tldraw, using only generic component names ("Retriever," "Reranker," "Vector Store"); no internal product names, codenames, or screenshots
+- [x] **DIAG-02**: One featured-project architecture diagram (recommended: SF Date Night Concierge or Voice Intent Eval) exists as a sanitized SVG in `public/diagrams/`
+- [x] **DIAG-03**: All diagrams render crisply on retina at full width on mobile and desktop; alt text describes the component flow for screen readers
+- [x] **DIAG-04**: A confidentiality review gate passes on every Asurion-touching paragraph and diagram before deploy
 
 ### SEO & Social Sharing
 
@@ -93,8 +93,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Deploy & Domain
 
-- [ ] **DEP-01**: Repository is hosted on GitHub at `pjnhek/portfolio` (or chosen repo name) with main branch protected
-- [ ] **DEP-02**: Vercel project is linked to the GitHub repository with preview deploys on every PR
+- [x] **DEP-01**: Repository is hosted on GitHub at `pjnhek/portfolio` (or chosen repo name) with main branch protected
+- [x] **DEP-02**: Vercel project is linked to the GitHub repository with preview deploys on every PR
 - [ ] **DEP-03**: `NEXT_PUBLIC_SITE_URL=https://pjnhek.com` is set in Vercel production environment
 - [ ] **DEP-04**: DNS apex record `A @ 76.76.21.21` is configured at the registrar
 - [ ] **DEP-05**: DNS `CNAME www → cname.vercel-dns.com` is configured at the registrar
@@ -170,36 +170,36 @@ Final phase assignments locked at roadmap creation (2026-05-20).
 | FOUND-11 | Phase 1 | Complete |
 | FOUND-12 | Phase 1 | Complete |
 | FOUND-13 | Phase 1 | Complete |
-| DEP-01 | Phase 1 | Pending |
-| DEP-02 | Phase 1 | Pending |
-| CONT-01 | Phase 2 | Pending |
-| CONT-02 | Phase 2 | Pending |
-| CONT-03 | Phase 2 | Pending |
-| CONT-04 | Phase 2 | Pending |
-| CONT-05 | Phase 2 | Pending |
-| CONT-06 | Phase 2 | Pending |
-| CONT-07 | Phase 2 | Pending |
-| CONT-08 | Phase 2 | Pending |
-| SEC-01 | Phase 2 | Pending |
-| SEC-02 | Phase 2 | Pending |
-| SEC-03 | Phase 2 | Pending |
-| SEC-04 | Phase 2 | Pending |
-| SEC-05 | Phase 2 | Pending |
-| SEC-06 | Phase 2 | Pending |
-| SEC-07 | Phase 2 | Pending |
-| SEC-08 | Phase 2 | Pending |
-| PROJ-01 | Phase 2 | Pending |
-| PROJ-02 | Phase 2 | Pending |
-| PROJ-03 | Phase 2 | Pending |
-| PROJ-04 | Phase 2 | Pending |
-| PROJ-05 | Phase 2 | Pending |
-| USES-01 | Phase 2 | Pending |
-| USES-02 | Phase 2 | Pending |
-| USES-03 | Phase 2 | Pending |
-| DIAG-01 | Phase 2 | Pending |
-| DIAG-02 | Phase 2 | Pending |
-| DIAG-03 | Phase 2 | Pending |
-| DIAG-04 | Phase 2 | Pending |
+| DEP-01 | Phase 1 | Verified (Plan 01-03 — public repo `pjnhek/portfolio` with GitHub Rulesets on main: PR required + force-push blocked + `Vercel` status check required) |
+| DEP-02 | Phase 1 | Verified (Plan 01-03 — Vercel project linked; smoke-test PR #1 produced preview URL `https://portfolio-git-chore-01-smoke-test-preview-pjnheks-projects.vercel.app` returning HTTP 200 + correct title) |
+| CONT-01 | Phase 2 | Complete |
+| CONT-02 | Phase 2 | Complete |
+| CONT-03 | Phase 2 | Complete |
+| CONT-04 | Phase 2 | Complete |
+| CONT-05 | Phase 2 | Complete |
+| CONT-06 | Phase 2 | Complete |
+| CONT-07 | Phase 2 | Complete |
+| CONT-08 | Phase 2 | Complete |
+| SEC-01 | Phase 2 | Complete |
+| SEC-02 | Phase 2 | Complete |
+| SEC-03 | Phase 2 | Complete |
+| SEC-04 | Phase 2 | Complete |
+| SEC-05 | Phase 2 | Complete |
+| SEC-06 | Phase 2 | Complete |
+| SEC-07 | Phase 2 | Complete |
+| SEC-08 | Phase 2 | Complete |
+| PROJ-01 | Phase 2 | Complete (02-03) |
+| PROJ-02 | Phase 2 | Complete (02-03) |
+| PROJ-03 | Phase 2 | Complete (02-03) |
+| PROJ-04 | Phase 2 | Complete |
+| PROJ-05 | Phase 2 | Complete (02-03) |
+| USES-01 | Phase 2 | Complete (02-04) |
+| USES-02 | Phase 2 | Complete (02-04) |
+| USES-03 | Phase 2 | Complete (02-04) |
+| DIAG-01 | Phase 2 | Complete |
+| DIAG-02 | Phase 2 | Complete |
+| DIAG-03 | Phase 2 | Complete |
+| DIAG-04 | Phase 2 | Complete |
 | SEO-01 | Phase 3 | Pending |
 | SEO-02 | Phase 3 | Pending |
 | SEO-03 | Phase 3 | Pending |
@@ -238,4 +238,4 @@ Final phase assignments locked at roadmap creation (2026-05-20).
 
 ---
 *Requirements defined: 2026-05-20*
-*Last updated: 2026-05-20 — roadmap phase assignments locked*
+*Last updated: 2026-05-21 — Plan 01-03 verified DEP-01 + DEP-02 on live GitHub + Vercel infrastructure*

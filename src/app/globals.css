@@ -58,3 +58,18 @@ body {
   background: var(--color-ink);
   color: var(--color-paper);
 }
+
+/* Phase 2: anchor scroll behavior (SEC-08). scroll-padding-top keeps anchored
+   headings off the viewport edge when the URL hash updates; smooth scroll is
+   gated by prefers-reduced-motion so users with reduced motion get instant
+   jumps. These are runtime CSS rules, NOT Tailwind design tokens — declared
+   outside the design-token block above. */
+html {
+  scroll-padding-top: 4rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}

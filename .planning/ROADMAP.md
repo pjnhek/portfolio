@@ -9,8 +9,8 @@
 
 ## Phases
 
-- [ ] **Phase 1: Foundation Slice** — Next.js 16 + Tailwind v4 + TS scaffold live on a Vercel preview URL with the design system shell rendering
-- [ ] **Phase 2: Content & Sections** — Hero, About, Experience, 4 Featured Projects, project detail pages, /uses, sanitized Asurion diagrams (confidentiality gate)
+- [x] **Phase 1: Foundation Slice** — Next.js 16 + Tailwind v4 + TS scaffold live on a Vercel preview URL with the design system shell rendering (completed 2026-05-21)
+- [x] **Phase 2: Content & Sections** — Hero, About, Experience, 4 Featured Projects, project detail pages, /uses, sanitized Asurion diagrams (confidentiality gate) (completed 2026-06-20)
 - [ ] **Phase 3: SEO, Polish, Performance & Accessibility** — Metadata + OG image factory, sitemap/robots, Lighthouse ≥95 / a11y 100, mobile QA on real iPhone, cold-read pass
 - [ ] **Phase 4: Domain Cutover & Production Verification** — pjnhek.com DNS + HTTPS, legacy decommission, GitHub profile curation, Vercel usage alerts, LinkedIn OG verified on production
 
@@ -26,10 +26,10 @@
   2. Every pull request to `main` produces a Vercel preview deployment URL whose browser tab title contains "James Nhek" (default metadata from `app/layout.tsx`) and whose `<html>` ships zero `tailwind.config.js`-based styles (CSS-first `@theme` only).
   3. `pnpm lint`, `pnpm format`, and `tsc --noEmit` all exit cleanly with `strict: true` and `noUncheckedIndexedAccess: true` enforced, and the design-system primitives (`Section`, `NumberedHeading`, `Tag`, `ExternalLink`, `ArchitectureDiagram`) compile and render in isolation.
   4. `next.config.ts` does not set `output: 'export'`, `package.json` pins `packageManager: pnpm@…` and `engines.node` to Node 22 LTS, and `lib/env.ts` fails the build with a zod error when a required env var is missing.
-**Plans:** 2/3 plans executed
+**Plans:** 3/3 plans executed
 - [x] 01-01-PLAN.md — Scaffold Next.js 16 + Tailwind v4 + TS strict + Geist + ESLint/Prettier + inline home shell (FOUND-01/02/03/04/05/06/09/11/12/13)
 - [x] 01-02-PLAN.md — 5 design-system primitives + zod-validated env.ts + placeholder SVG + refactor home shell to compose primitives (FOUND-07/08/10)
-- [ ] 01-03-PLAN.md — GitHub repo pjnhek/portfolio public + branch protection + Vercel preview-on-PR + smoke-test PR (DEP-01/02)
+- [x] 01-03-PLAN.md — GitHub repo pjnhek/portfolio public + branch protection + Vercel preview-on-PR + smoke-test PR (DEP-01/02)
 
 ### Phase 2: Content & Sections (with Confidentiality Gate)
 **Goal:** A recruiter visiting the Vercel preview URL can read the entire portfolio narrative — Hero, About (pivot story first sentence), Experience, 4 Featured Projects with sanitized Asurion diagrams, project detail pages, and /uses — and reach James by email, with every Asurion-touching paragraph and diagram cleared by an explicit confidentiality review.
@@ -42,7 +42,12 @@
   3. `/uses` renders AI-engineer-specific content (model defaults, MCP servers, eval stack, agent framework) sourced from `content/uses.ts`, links back to home, and is reachable from the footer.
   4. At least one Asurion-context architecture diagram and at least one featured-project diagram render crisply on retina at full mobile width as SVGs in `public/diagrams/`, with screen-reader alt text describing the component flow — and **every Asurion-touching paragraph and diagram has been signed off through an explicit confidentiality review gate** ("would I be comfortable if my Asurion manager saw this on LinkedIn tomorrow?") before this phase closes.
   5. Clicking the Contact section's `mailto:` link opens an email client to James's address, the copy-email button writes the address to the clipboard, and section anchors (`#about`, `#experience`, `#projects`, `#contact`) update the URL hash.
-**Plans:** TBD
+**Plans:** 5/5 plans complete
+- [x] 02-01-PLAN.md — Types + 4 content modules + lib/content + globals.css anchor scroll (foundation data layer; blocking checkpoints: RESUME deposited + GitHub URLs confirmed)
+- [x] 02-02-PLAN.md — MetricCallout + SiteFooter + ProjectCard + Experience sub-components; refactor home to render real Experience + Projects (drop home `04. Uses` → 4 numbered sections)
+- [x] 02-03-PLAN.md — `/projects/[slug]` dynamic route (generateStaticParams + generateMetadata) + BackLink + refine project narratives
+- [x] 02-04-PLAN.md — `/uses` route + UsesEntry + finalize uses.ts list (James edits seed per D-Uses-04)
+- [x] 02-05-PLAN.md — DIAG-01 + DIAG-02 SVGs + CopyEmail client island + real About copy + real Contact section + CONFIDENTIALITY-REVIEW.md hard merge gate (phase closer)
 **UI hint:** yes
 
 ### Phase 3: SEO, Polish, Performance & Accessibility
@@ -77,8 +82,8 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation Slice | 1/3 | In Progress|  |
-| 2. Content & Sections | 0/0 | Not started | - |
+| 1. Foundation Slice | 3/3 | Complete    | 2026-05-21 |
+| 2. Content & Sections | 5/5 | Complete    | 2026-06-20 |
 | 3. SEO, Polish, Performance & Accessibility | 0/0 | Not started | - |
 | 4. Domain Cutover & Production Verification | 0/0 | Not started | - |
 
