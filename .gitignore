@@ -37,6 +37,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# planning refs — private source-of-truth docs (resume PII, etc.) used to author site content
+.planning/refs/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

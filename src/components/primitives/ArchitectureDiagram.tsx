@@ -25,16 +25,28 @@ export function ArchitectureDiagram({
   alt,
   caption,
 }: ArchitectureDiagramProps) {
-  const isSvg = src.toLowerCase().endsWith(".svg");
+  // IN-02: strip query-string and hash before checking the extension so
+  // cache-busted paths (`/diagrams/foo.svg?v=2`) and fragment refs
+  // (`/diagrams/foo.svg#layer-1`) still route to the SVG branch instead of
+  // falling through to `next/image` and getting rasterized.
+  const pathname = src.split("?")[0]?.split("#")[0] ?? "";
+  const isSvg = pathname.toLowerCase().endsWith(".svg");
   return (
     <figure className="my-8 md:my-12">
       {isSvg ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={src}
-          alt={alt}
-          className="h-auto w-full border border-[color:var(--color-rule)]"
-        />
+        // IN-01: wrap the passthrough <img> in the same aspect-[16/9]
+        // container as the raster branch so the layout reserves space before
+        // the SVG fetches/parses. Without this, the home-route About section
+        // (LCP region) can shift when the placeholder SVG resolves — CLS risk.
+        // Border moves to the wrapper to match the raster branch visually.
+        <div className="aspect-[16/9] w-full border border-[color:var(--color-rule)]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={src}
+            alt={alt}
+            className="h-full w-full object-contain"
+          />
+        </div>
       ) : (
         <div className="relative aspect-[16/9] w-full border border-[color:var(--color-rule)]">
           <Image src={src} alt={alt} fill className="object-contain" />

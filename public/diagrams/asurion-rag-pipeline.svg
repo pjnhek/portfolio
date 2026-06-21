@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none" stroke="#0a0a0a" stroke-width="2" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">
+  <title>RAG pipeline architecture</title>
+  <desc>Box-and-arrow architecture diagram showing a retrieval-augmented generation pipeline: documents flow into Ingestion, then Embed, then a Vector Store. User queries pass through Retriever and Reranker before being sent to an LLM. An Eval loop feeds back into the pipeline.</desc>
+
+  <!-- Indexing path (top row): Ingestion -> Embed -> Vector Store -->
+  <rect x="40" y="60" width="140" height="70"/>
+  <text x="110" y="100" text-anchor="middle" fill="#0a0a0a" stroke="none">Ingestion</text>
+
+  <rect x="240" y="60" width="140" height="70"/>
+  <text x="310" y="100" text-anchor="middle" fill="#0a0a0a" stroke="none">Embed</text>
+
+  <rect x="440" y="60" width="180" height="70"/>
+  <text x="530" y="100" text-anchor="middle" fill="#0a0a0a" stroke="none">Vector Store</text>
+
+  <!-- Arrows indexing path -->
+  <line x1="180" y1="95" x2="232" y2="95"/>
+  <polyline points="222,87 232,95 222,103"/>
+  <line x1="380" y1="95" x2="432" y2="95"/>
+  <polyline points="422,87 432,95 422,103"/>
+
+  <!-- Query path (bottom row): Retriever -> Reranker -> LLM -->
+  <rect x="40" y="240" width="140" height="70"/>
+  <text x="110" y="280" text-anchor="middle" fill="#0a0a0a" stroke="none">Retriever</text>
+
+  <rect x="240" y="240" width="140" height="70"/>
+  <text x="310" y="280" text-anchor="middle" fill="#0a0a0a" stroke="none">Reranker</text>
+
+  <rect x="440" y="240" width="140" height="70"/>
+  <text x="510" y="280" text-anchor="middle" fill="#0a0a0a" stroke="none">LLM</text>
+
+  <!-- Arrows query path -->
+  <line x1="180" y1="275" x2="232" y2="275"/>
+  <polyline points="222,267 232,275 222,283"/>
+  <line x1="380" y1="275" x2="432" y2="275"/>
+  <polyline points="422,267 432,275 422,283"/>
+
+  <!-- Vector Store feeds Retriever (down-left arrow) -->
+  <line x1="530" y1="130" x2="110" y2="240" stroke="#737373"/>
+  <polyline points="119,232 110,240 121,242" stroke="#737373"/>
+
+  <!-- Eval node (right side) and feedback loop -->
+  <rect x="640" y="240" width="120" height="70" stroke="#737373"/>
+  <text x="700" y="280" text-anchor="middle" fill="#737373" stroke="none">Eval</text>
+
+  <!-- LLM -> Eval arrow -->
+  <line x1="580" y1="275" x2="632" y2="275" stroke="#737373"/>
+  <polyline points="622,267 632,275 622,283" stroke="#737373"/>
+
+  <!-- Eval feedback loop back into pipeline (dashed gray) -->
+  <path d="M 700 240 Q 700 160 530 160" stroke="#737373" stroke-dasharray="6 4"/>
+  <polyline points="540,152 530,160 540,168" stroke="#737373"/>
+</svg>

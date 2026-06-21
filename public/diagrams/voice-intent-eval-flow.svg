@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 -2 740 416" fill="none" stroke="#0a0a0a" stroke-width="2" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">
+  <title>Voice intent evaluation pipeline</title>
+  <desc>Flow diagram of the voice intent evaluation pipeline. Synthesized speech from TTS feeds into ASR transcription, then into a two-stage Claude classifier that rephrases and then classifies intent. Outputs flow to a dual-judge benchmark, then to a CI gate. CI failures loop back into the classifier stage.</desc>
+
+  <!-- Row 1: TTS -> ASR -> Two-stage Claude classifier -->
+  <rect x="40" y="80" width="120" height="70"/>
+  <text x="100" y="120" text-anchor="middle" fill="#0a0a0a" stroke="none">TTS</text>
+
+  <rect x="220" y="80" width="120" height="70"/>
+  <text x="280" y="120" text-anchor="middle" fill="#0a0a0a" stroke="none">ASR</text>
+
+  <rect x="400" y="60" width="240" height="110"/>
+  <text x="520" y="105" text-anchor="middle" fill="#0a0a0a" stroke="none">Two-stage</text>
+  <text x="520" y="130" text-anchor="middle" fill="#0a0a0a" stroke="none">Claude classifier</text>
+
+  <!-- Arrows TTS -> ASR -> classifier -->
+  <line x1="160" y1="115" x2="212" y2="115"/>
+  <polyline points="202,107 212,115 202,123"/>
+  <line x1="340" y1="115" x2="392" y2="115"/>
+  <polyline points="382,107 392,115 382,123"/>
+
+  <!-- Row 2: Dual-judge benchmark -> CI -->
+  <rect x="240" y="280" width="240" height="80"/>
+  <text x="360" y="315" text-anchor="middle" fill="#0a0a0a" stroke="none">Dual-judge</text>
+  <text x="360" y="340" text-anchor="middle" fill="#0a0a0a" stroke="none">benchmark</text>
+
+  <rect x="560" y="280" width="120" height="80"/>
+  <text x="620" y="325" text-anchor="middle" fill="#0a0a0a" stroke="none">CI</text>
+
+  <!-- classifier -> dual-judge (down arrow) -->
+  <line x1="520" y1="170" x2="360" y2="272"/>
+  <polyline points="370,267 360,272 363,261"/>
+
+  <!-- dual-judge -> CI -->
+  <line x1="480" y1="320" x2="552" y2="320"/>
+  <polyline points="542,312 552,320 542,328"/>
+
+  <!-- Feedback: CI -> classifier (dashed gray loop back) -->
+  <path d="M 620 280 Q 620 200 640 200 Q 740 200 740 115 Q 740 60 640 60" stroke="#737373" stroke-dasharray="6 4"/>
+  <polyline points="650,52 640,60 650,68" stroke="#737373"/>
+</svg>

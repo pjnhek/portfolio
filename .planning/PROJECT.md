@@ -14,23 +14,22 @@ A recruiter lands on pjnhek.com, immediately understands "James is a serious AI 
 
 <!-- Shipped and confirmed valuable. -->
 
-(None yet — ship to validate)
+- [x] Hero / landing section that names who James is and what he does (AI Engineer, RAG/evals) — *Validated in Phase 1: Foundation Slice*
+- [x] About section telling the tax analyst → AI engineer pivot story — *Validated in Phase 2: Content & Sections*
+- [x] Experience section embedded on-site (Asurion + prior roles) — no resume PDF download required — *Validated in Phase 2*
+- [x] Featured projects section with 4 hand-curated projects (SF Date Night Concierge, GTM Research Pipeline, Voice Intent Eval, Daily Weather Pipeline) — *Validated in Phase 2*
+- [x] Sanitized architecture diagrams for Asurion work (drawn fresh, no proprietary info) — *Validated in Phase 2 (DIAG-01/DIAG-02, cleared by signed confidentiality review)*
+- [x] Contact section with email and a way to reach out beyond LinkedIn — *Validated in Phase 2 (mailto + copy-email island + LinkedIn/GitHub)*
+- [x] /uses page describing James's stack and setup — *Validated in Phase 2*
+- [x] Deployed on free tier (Vercel hobby or equivalent) — *Validated in Phase 1*
 
 ### Active
 
 <!-- Current scope. Building toward these. -->
 
-- [ ] Hero / landing section that names who James is and what he does (AI Engineer, RAG/evals)
-- [ ] About section telling the tax analyst → AI engineer pivot story
-- [ ] Experience section embedded on-site (Asurion + prior roles) — no resume PDF download required
-- [ ] Featured projects section with 4 hand-curated projects (SF Date Night Concierge, GTM Research Pipeline, Voice Intent Eval, Daily Weather Pipeline)
-- [ ] Sanitized architecture diagrams for Asurion work (drawn fresh, no proprietary info)
-- [ ] Contact section with email and a way to reach out beyond LinkedIn
-- [ ] /uses page describing James's stack and setup
 - [ ] Custom domain pjnhek.com configured and live
 - [ ] Mobile-responsive (recruiters often click on phone first)
 - [ ] Fast load + clean Lighthouse scores (the site itself signals engineering quality)
-- [ ] Deployed on free tier (Vercel hobby or equivalent)
 
 ### Out of Scope
 
@@ -112,4 +111,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-05-20 after initialization*
+*Last updated: 2026-06-20 — Phase 2 (Content & Sections, with Confidentiality Gate) complete. Full recruiter narrative now renders: Hero → About (pivot) → Experience (Asurion role + sanitized RAG diagram) → 4 Featured Projects (one with its own detail-page diagram) → Contact (mailto + copy-email). /uses ships. Every Asurion-touching paragraph and diagram cleared by a signed confidentiality review (sha256-bound to the May-2026 resume). Remaining Active: custom domain pjnhek.com, mobile/Lighthouse polish (Phase 3) and deploy/domain wiring (Phase 4).*
