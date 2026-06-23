@@ -58,10 +58,14 @@
 **Success Criteria** (what must be TRUE):
   1. Every route (`/`, `/uses`, every `/projects/[slug]`) exports `generateMetadata` built through `lib/seo.ts`'s `buildMetadata({ title, description, path })` factory; the home title contains "James Nhek"; `app/sitemap.ts` derives URLs from `content/projects.ts`; `app/robots.ts` references the sitemap; `app/opengraph-image.tsx` returns a 1200×630 typography poster as `image/png`.
   2. Lighthouse mobile audit on the preview returns Performance ≥ 95 and Accessibility = 100; axe DevTools is zero-issue on home, one project detail, and /uses; every interactive element shows a visible `focus-visible:` outline; the site is fully keyboard-navigable (Tab / Shift+Tab / Enter / Esc) with no mouse traps; total home-route JS shipped is < 100 KB gzipped (Network tab verified).
-  3. `app/not-found.tsx` renders a styled 404 linking home; `app/icon.tsx` + `app/apple-icon.tsx` render in browser tabs and on iOS home screen; hero / above-the-fold images use `next/image` with `priority` + `fetchPriority="high"`.
+  3. `app/not-found.tsx` renders a styled 404 linking home; `app/icon.tsx` + `app/apple-icon.tsx` render in browser tabs and on iOS home screen; above-the-fold raster images use `next/image` with `fetchPriority="high"` (NOTE: `priority` is deprecated in Next.js 16 — `fetchPriority="high"` is the correct Next 16 API per RESEARCH.md Pattern 7).
   4. The site renders correctly on a real iPhone at 375px (not just DevTools emulation), and a non-technical cold reader can answer both "What does James do?" and "How would I contact him?" within 60 seconds on the home page.
   5. LinkedIn Post Inspector, opengraph.xyz, and a real Slack DM of the **preview URL** all render the OG card with image + title + description — note that final production verification is re-run in Phase 4 against pjnhek.com (preview deployments behave differently from production).
-**Plans:** TBD
+**Plans:** 4 plans
+- [ ] 03-01-PLAN.md — lib/seo.ts buildMetadata factory + opengraph-image.tsx (1200×630 static OG card) + wire all three route families (layout, /uses, /projects/[slug]) (SEO-01/02/03/04)
+- [ ] 03-02-PLAN.md — icon.tsx + apple-icon.tsx (JN monogram) + delete favicon.ico + not-found.tsx + sitemap.ts + robots.ts + ArchitectureDiagram.tsx fetchPriority="high" patch (POL-01/02/03, SEO-05/06)
+- [ ] 03-03-PLAN.md — Automated quality gate: Lighthouse CLI + axe CLI scans + bundle budget check + focus-ring audit + keyboard nav audit (POL-04/05/06/07/08)
+- [ ] 03-04-PLAN.md — Human verify checkpoints: LinkedIn Post Inspector + opengraph.xyz + real Slack/iMessage DM + real iPhone @375px + 60-sec cold-read + phase close (SEO-07/08/09, POL-09/10)
 **UI hint:** yes
 
 ### Phase 4: Domain Cutover & Production Verification
@@ -84,7 +88,7 @@
 |-------|----------------|--------|-----------|
 | 1. Foundation Slice | 3/3 | Complete    | 2026-05-21 |
 | 2. Content & Sections | 5/5 | Complete    | 2026-06-20 |
-| 3. SEO, Polish, Performance & Accessibility | 0/0 | Not started | - |
+| 3. SEO, Polish, Performance & Accessibility | 0/4 | Not started | - |
 | 4. Domain Cutover & Production Verification | 0/0 | Not started | - |
 
 ## Coverage
@@ -116,3 +120,4 @@ These are tracked in `REQUIREMENTS.md ## v2 Requirements` and not blockers for v
 
 ---
 *Roadmap created: 2026-05-20*
+*Phase 3 plans added: 2026-06-23*
