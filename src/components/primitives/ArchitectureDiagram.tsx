@@ -49,7 +49,7 @@ export function ArchitectureDiagram({
         </div>
       ) : (
         <div className="relative aspect-[16/9] w-full border border-[color:var(--color-rule)]">
-          <Image src={src} alt={alt} fill className="object-contain" />
+          <Image src={src} alt={alt} fill className="object-contain" fetchPriority="high" />
         </div>
       )}
       {caption && (
