@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SiteFooter } from "@/components/primitives/SiteFooter";
 import { env } from "@/lib/env";
+import { buildMetadata } from "@/lib/seo";
 import "./globals.css";
 
 // Geist Sans + Geist Mono are loaded via `next/font/google` — self-hosted at
@@ -26,9 +27,12 @@ const geistMono = Geist_Mono({
 // `next build` per FOUND-10.
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_SITE_URL),
-  title: "James Nhek — AI Engineer",
-  description:
-    "AI Engineer at Asurion. RAG, evaluations, and agentic workflows. Based in San Francisco. Open to roles.",
+  ...buildMetadata({
+    title: "James Nhek — AI Engineer",
+    description:
+      "AI Engineer at Asurion. RAG, evaluations, and agentic workflows. Based in San Francisco. Open to roles.",
+    path: "/",
+  }),
 };
 
 export default function RootLayout({
