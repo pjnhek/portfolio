@@ -2,11 +2,10 @@
 // lines 322-362; 02-UI-SPEC.md §"/projects/[slug]" lines 745-772).
 //
 // Pre-renders all 4 project detail pages at build time via
-// `generateStaticParams`. Per-page metadata via `generateMetadata` is
-// intentionally minimal (`title` + `description` only) — Phase 3 / SEO-01..04
-// owns the `lib/seo.ts` factory and the `openGraph`/`twitter` keys. Inlining
-// those keys here would force Phase 3 to either undo or merge them
-// (02-RESEARCH.md Pitfall 10 line 958). This is the first Next.js 16
+// `generateStaticParams`. Per-page metadata via `generateMetadata` now uses
+// the `buildMetadata` factory (Phase 3 / SEO-01..04), which adds social-card
+// metadata (images pointing to the site-wide OG card) and twitter card fields.
+// This is the first Next.js 16
 // async-params dynamic route in the codebase — `params` is
 // `Promise<{ slug: string }>` at the type level and `await params` at the
 // implementation level (both signatures).
@@ -34,6 +33,7 @@ import { Section } from "@/components/primitives/Section";
 import { Tag } from "@/components/primitives/Tag";
 import { BackLink } from "@/components/nav/BackLink";
 import { getAllProjects, getProject } from "@/lib/content";
+import { buildMetadata } from "@/lib/seo";
 
 export async function generateStaticParams() {
   const projects = getAllProjects();
@@ -48,10 +48,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
-  return {
+  return buildMetadata({
     title: `${project.title} — James Nhek`,
-    description: project.subtitle.slice(0, 160),
-  };
+    description: project.subtitle.slice(0, 155), // 155 not 160 — factory adds OG title/desc; keep under 160 with margin
+    path: `/projects/${slug}`,
+  });
 }
 
 export default async function ProjectDetailPage({

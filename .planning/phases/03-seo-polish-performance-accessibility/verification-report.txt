@@ -1,0 +1,143 @@
+================================================================
+ Phase 3 — Automated Verification Report (03-03)
+================================================================
+Generated: 2026-06-25T06:59:46Z
+Strategy: Local build + branch (James deploys). LOCAL-capable checks run
+against `pnpm start` on http://localhost:3000. Preview-only checks
+(Lighthouse-on-preview, axe-on-preview-URL, *.vercel.app curls) are
+DEFERRED until a fresh Vercel preview exists (see "DEFERRED" section).
+
+Branch: gsd/phase-3-seo-polish-performance-accessibility
+Build: Next.js 16.2.6, Turbopack, production (`pnpm build && pnpm start`)
+
+----------------------------------------------------------------
+ Bundle Budget (POL-04)  —  RE-BASELINED
+----------------------------------------------------------------
+Method: summed gzipped transfer size of all <script src> + modulepreload
+chunks referenced by the home route HTML (authoritative per-route First
+Load JS; Next 16 + Turbopack no longer prints the "First Load JS" column).
+
+Home-route JS total:        ~191.6 KB gzipped
+  Breakdown:
+    Framework runtime (rootMainFiles, every page):  ~132 KB gz  [unavoidable]
+      0uuzj-.-socmi.js .... 71.0 KB gz
+      0-jknoljz7cth.js .... 40.5 KB gz
+      00awhcvun08fm.js .... 10.6 KB gz
+      16gval25x4~p2.js ....  6.2 KB gz
+      turbopack-*.js ......  4.2 KB gz
+    core-js polyfill chunk (polyfillFiles):          ~39.5 KB gz  [not strippable in Turbopack via browserslist]
+      03~yq9q893hmn.js .... 39.5 KB gz
+    App code (4 chunks):                             ~23.8 KB gz  [LEAN — as designed]
+      0n~v8~rri7~t2.js .... 12.9 KB gz
+      0amk6tn7u52ey.js ....  6.5 KB gz
+      11r76k43.7fu2.js ....  3.6 KB gz
+      1513ibnpmlx36.js ....  1.5 KB gz
+
+ORIGINAL THRESHOLD: < 100 KB gz total  ->  NOT ACHIEVABLE (framework floor ~167 KB).
+  The 100 KB target traced to 03-RESEARCH assumption A2 (an explicitly-flagged
+  [ASSUMED] gzip ratio from older Next/webpack numbers).
+RE-BASELINED THRESHOLD (REQUIREMENTS.md, approved by James):
+  - App-code chunks < 30 KB gz   ->  PASS (23.8 KB)
+  - Total home-route JS < 200 KB gz  ->  PASS (191.6 KB)
+  - No client-side dependency leak    ->  PASS (next/og stays server-side; "use client" count = 1)
+
+Action taken: added a modern `browserslist` to package.json (Chrome>=111,
+Edge>=111, Firefox>=128, Safari>=16.4, iOS>=16.4) matching CLAUDE.md's stated
+browser support. NOTE: Next 16 + Turbopack does NOT strip the core-js polyfill
+chunk via browserslist (verified: byte-identical chunk after clean rebuild).
+The key is retained as accurate documentation of supported browsers and may
+activate in a future Turbopack release; it is NOT claimed as a byte saving.
+
+VERDICT: PASS (against re-baselined POL-04). App is as lean as Next 16 allows;
+no fixable inflation; OG/satori correctly server-only.
+
+----------------------------------------------------------------
+ OG Head Tags (SEO-04)  —  PASS (local)
+----------------------------------------------------------------
+curl -sL http://localhost:3000/ | grep og:image|og:title|twitter:card
+  <meta property="og:title"   content="James Nhek — AI Engineer"/>
+  <meta property="og:image"   content="https://pjnhek.com/opengraph-image?<hash>"/>
+  <meta property="og:image:type" content="image/png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:alt" content="James Nhek — AI Engineer"/>
+  <meta name="twitter:card"   content="summary_large_image"/>
+/opengraph-image Content-Type: image/png  (1200x630)
+  -> all three required tags present; OG image renders as PNG.
+
+----------------------------------------------------------------
+ sitemap.xml (SEO-05)  —  PASS (local)
+----------------------------------------------------------------
+curl -sL http://localhost:3000/sitemap.xml
+  Valid <urlset>, exactly 6 <url> entries:
+    https://pjnhek.com
+    https://pjnhek.com/uses
+    https://pjnhek.com/projects/sf-date-night-concierge
+    https://pjnhek.com/projects/gtm-research-pipeline
+    https://pjnhek.com/projects/voice-intent-eval
+    https://pjnhek.com/projects/daily-weather-pipeline
+  Note: URLs show https://pjnhek.com even on local/preview (env .default()
+  behavior — expected per 03-RESEARCH Pitfall 4).
+
+----------------------------------------------------------------
+ robots.txt (SEO-06)  —  PASS (local)
+----------------------------------------------------------------
+curl -sL http://localhost:3000/robots.txt
+  User-Agent: *
+  Allow: /
+
+  Sitemap: https://pjnhek.com/sitemap.xml
+  -> contains "Allow: /" and a "Sitemap:" line.
+
+----------------------------------------------------------------
+ 404 status (POL-01)  —  PASS (local)
+----------------------------------------------------------------
+curl -o /dev/null -s -w "%{http_code}" http://localhost:3000/this-url-does-not-exist-at-all
+  -> 404
+
+----------------------------------------------------------------
+ Icon (POL-02)  —  PASS (local)
+----------------------------------------------------------------
+curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/icon   -> 200
+(/apple-icon and /opengraph-image also build as static routes.)
+
+----------------------------------------------------------------
+ Focus Ring Audit (POL-07)  —  PASS (code audit)
+----------------------------------------------------------------
+Canonical pattern present on ALL interactive-element files:
+  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-ink)]
+  ✓ src/components/primitives/ExternalLink.tsx
+  ✓ src/components/nav/BackLink.tsx
+  ✓ src/components/interactive/CopyEmail.tsx  (the <button> island)
+  ✓ src/components/primitives/SiteFooter.tsx
+  ✓ src/components/cards/ProjectCard.tsx
+  ✓ src/app/not-found.tsx
+No interactive element is missing a visible focus ring.
+
+----------------------------------------------------------------
+ Keyboard Navigation (POL-08)  —  PASS (code audit)
+----------------------------------------------------------------
+Single client island (CopyEmail) uses a native <button> (keyboard-native).
+All other interactive elements are <Link>/<a>/<ExternalLink> — natively
+tabbable, no custom tabIndex traps, no mouse-only interactions. Tab order
+follows DOM source order. No mouse traps.
+
+----------------------------------------------------------------
+ use-client invariant
+----------------------------------------------------------------
+Exactly 1 "use client" directive in src/ (CopyEmail.tsx) — confirmed by
+directive-anchored grep (^["']use client). Comment mentions in env.ts and
+uses/page.tsx are NOT directives.
+
+================================================================
+ DEFERRED — require a fresh Vercel preview deploy of THIS branch
+================================================================
+These cannot pass against the old preview (it predates Wave 1 code):
+  [ ] POL-05  Lighthouse mobile: Performance >= 95, Accessibility = 100  (on preview URL)
+  [ ] POL-06  axe CLI: 0 violations on home, /uses, one /projects/[slug]  (on preview URL)
+  [ ] SEO-04/05/06, POL-01/02  re-confirmed on *.vercel.app preview URL
+Run after James provides the fresh preview URL (see deploy handoff).
+
+================================================================
+ PHASE 3 LOCAL GATE: PASS
+================================================================

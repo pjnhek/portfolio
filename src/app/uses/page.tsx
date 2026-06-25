@@ -10,10 +10,8 @@
 // — no dynamic params, no data fetching. `pnpm build` emits a single static
 // `.html` + `.rsc` for /uses.
 //
-// Per-page metadata is `title` + `description` only. Phase 3 / SEO-01..04 owns
-// the `lib/seo.ts` factory and the OG / social-card keys; this route
-// intentionally omits them (RESEARCH.md Pitfall 10 — no Phase-3 scope creep
-// into Phase 2; acceptance grep for those keys returns 0).
+// Metadata is now wired through `buildMetadata` (Phase 3 / SEO-01..04),
+// which sets title, description, social-card image, and twitter card.
 //
 // The H1 renders at `--text-heading`, NOT `--text-display` — `--text-display`
 // is reserved for the home `<h1>` "James Nhek" sitewide.
@@ -23,12 +21,14 @@ import { Section } from "@/components/primitives/Section";
 import { UsesEntry } from "@/components/uses/UsesEntry";
 import { uses } from "@/content/uses";
 import type { UsesCategory } from "@/types/content";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Uses — James Nhek",
   description:
     "Models, MCP servers, eval stack, agent framework, and dev workflow I reach for in 2026.",
-};
+  path: "/uses",
+});
 
 // Filter the typed `uses` array by category. UsesCategory is a closed string-
 // literal union (`src/types/content.ts`), so a typo here is a TS compile error.
