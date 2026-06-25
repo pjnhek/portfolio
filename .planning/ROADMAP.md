@@ -71,12 +71,12 @@
   2. Lighthouse mobile audit on the preview returns Performance ≥ 95 and Accessibility = 100; axe DevTools is zero-issue on home, one project detail, and /uses; every interactive element shows a visible `focus-visible:` outline; the site is fully keyboard-navigable (Tab / Shift+Tab / Enter / Esc) with no mouse traps; total home-route JS shipped is < 100 KB gzipped (Network tab verified).
   3. `app/not-found.tsx` renders a styled 404 linking home; `app/icon.tsx` + `app/apple-icon.tsx` render in browser tabs and on iOS home screen; above-the-fold raster images use `next/image` with `fetchPriority="high"` (NOTE: `priority` is deprecated in Next.js 16 — `fetchPriority="high"` is the correct Next 16 API per RESEARCH.md Pattern 7).
   4. The site renders correctly on a real iPhone at 375px (not just DevTools emulation), and a non-technical cold reader can answer both "What does James do?" and "How would I contact him?" within 60 seconds on the home page.
-  5. LinkedIn Post Inspector, opengraph.xyz, and a real Slack DM of the **preview URL** all render the OG card with image + title + description — note that final production verification is re-run in Phase 4 against pjnhek.com (preview deployments behave differently from production).**Plans:** 4 plans
+  5. LinkedIn Post Inspector, opengraph.xyz, and a real Slack DM of the **preview URL** all render the OG card with image + title + description — note that final production verification is re-run in Phase 4 against pjnhek.com (preview deployments behave differently from production).**Plans:** 2/4 plans executed
 
 **Wave 1**
 
-- [ ] 03-01-PLAN.md — lib/seo.ts buildMetadata factory + opengraph-image.tsx (1200×630 static OG card) + wire all three route families (layout, /uses, /projects/[slug]) (SEO-01/02/03/04)
-- [ ] 03-02-PLAN.md — icon.tsx + apple-icon.tsx (JN monogram) + delete favicon.ico + not-found.tsx + sitemap.ts + robots.ts + ArchitectureDiagram.tsx fetchPriority="high" patch (POL-01/02/03, SEO-05/06)
+- [x] 03-01-PLAN.md — lib/seo.ts buildMetadata factory + opengraph-image.tsx (1200×630 static OG card) + wire all three route families (layout, /uses, /projects/[slug]) (SEO-01/02/03/04)
+- [x] 03-02-PLAN.md — icon.tsx + apple-icon.tsx (JN monogram) + delete favicon.ico + not-found.tsx + sitemap.ts + robots.ts + ArchitectureDiagram.tsx fetchPriority="high" patch (POL-01/02/03, SEO-05/06)
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
@@ -111,7 +111,7 @@
 |-------|----------------|--------|-----------|
 | 1. Foundation Slice | 3/3 | Complete    | 2026-05-21 |
 | 2. Content & Sections | 5/5 | Complete    | 2026-06-20 |
-| 3. SEO, Polish, Performance & Accessibility | 0/4 | Not started | - |
+| 3. SEO, Polish, Performance & Accessibility | 2/4 | In Progress|  |
 | 4. Domain Cutover & Production Verification | 0/0 | Not started | - |
 
 ## Coverage
